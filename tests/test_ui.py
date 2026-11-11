@@ -321,3 +321,21 @@ def test_mobile_pages(server, pw):
         assert w <= 392, (name, w)
     assert not errs, errs
 
+
+
+def test_interface_language_switch(server, pw):
+    import json as _j
+    import urllib.request as _u
+    req = _u.Request(server + "/api/settings", data=_j.dumps({"ui_language": "en"}).encode(), method="PUT", headers={"Content-Type": "application/json"})
+    _u.urlopen(req).read()
+    try:
+        page, errs = _page(pw)
+        page.goto(server + "/#/settings")
+        expect(page.locator("h1")).to_have_text("Settings")
+        expect(page.locator('#nav a[href="#/"]')).to_contain_text("Today")
+        expect(page.locator('[data-uilang="ru"] .flag')).to_have_css("background-color", "rgb(156, 163, 175)")
+        shot(page, "pc_settings_en")
+        assert not errs, errs
+    finally:
+        req = _u.Request(server + "/api/settings", data=_j.dumps({"ui_language": "uk"}).encode(), method="PUT", headers={"Content-Type": "application/json"})
+        _u.urlopen(req).read()

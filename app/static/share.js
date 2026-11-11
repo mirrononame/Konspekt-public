@@ -16,8 +16,14 @@ function claudeSetupHtml(st) {
     <div class="small muted" style="margin-top:8px">Без Cowork: Claude Code у цій папці — та сама команда. Нічого платного не потрібно, лише підписка Claude.</div>`;
 }
 
-const CLAUDE_INSTR = `Це папка застосунку «Конспект». Спершу прочитай CLAUDE.md у цій папці й працюй за ним.
-Не відкривай папки backups і trash. Пиши мені українською, коротко.`;
+const CLAUDE_INSTR = {  // 2.10: мовою інтерфейсу
+  uk: `Це папка застосунку «Конспект». Спершу прочитай CLAUDE.md у цій папці й працюй за ним.
+Не відкривай папки backups і trash. Пиши мені українською, коротко.`,
+  en: `This is the Konspekt app folder. First read CLAUDE.md in this folder and follow it.
+Don't open the backups and trash folders. Reply to me in English, briefly.`,
+  ru: `Это папка приложения «Конспект». Сначала прочитай CLAUDE.md в этой папке и работай по нему.
+Не открывай папки backups и trash. Пиши мне по-русски, коротко.`,
+};
 
 function shareHtml(subs) {
   if (!subs.length) return `<h2>${icon("archive")} Обмін конспектами</h2><div class="small muted">Предметів ще немає.</div>${shareImportHtml()}`;
@@ -48,7 +54,7 @@ async function loadShare(st) {
   if (cc) {
     cc.innerHTML = claudeSetupHtml(st);
     $("#cl-copy-dir").onclick = () => copyText(st.data_dir || "", "Шлях скопійовано");
-    $("#cl-copy-instr").onclick = () => copyText(CLAUDE_INSTR, "Інструкцію скопійовано — встав її в проєкт Cowork");
+    $("#cl-copy-instr").onclick = () => copyText(CLAUDE_INSTR[I18N.lang] || CLAUDE_INSTR.uk, "Інструкцію скопійовано — встав її в проєкт Cowork");
     $("#cl-open-dir") && ($("#cl-open-dir").onclick = () => POST("/api/open-data-folder").catch(handleErr));
   }
   if (!sc) return;

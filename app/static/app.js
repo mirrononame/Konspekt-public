@@ -160,6 +160,7 @@ async function loadBase() {
   S.state = st; S.schedule = sc; S.rev = st.rev;
   applyTheme(st.settings.theme);
   if (st.beta) { document.title = "Конспект БЕТА"; document.body.classList.add("is-beta"); }
+  if ((st.settings.ui_language || "uk") !== I18N.lang) i18nSet(st.settings.ui_language);  // 2.10: мова інтерфейсу
   renderNav();
 }
 
@@ -1467,7 +1468,8 @@ async function viewSettings() {
     S.state = st; const s = st.settings, w = st.whisper;
     const opt = (v, cur, t) => `<option value="${v}" ${v === cur ? "selected" : ""}>${t}</option>`;
     setView(`
-      <div class="page-head"><div><h1>Налаштування</h1><div class="sub">Усе зберігається на вашому ПК і переживає перезапуск</div></div></div>
+      <div class="page-head"><div><h1>Налаштування</h1><div class="sub">Усе зберігається на вашому ПК і переживає перезапуск</div></div>
+        <div><div class="label-t" style="margin-bottom:4px">Мова інтерфейсу</div>${langPickerHtml(s.ui_language || "uk")}</div></div>
       <div class="card pad" id="remote-card" style="margin-bottom:14px"><h2>${icon("phone")} Доступ з телефона (Tailscale)</h2><div class="small muted"><span class="spinner"></span> Перевіряю Tailscale…</div></div>
       <div class="card pad" id="ios-card" style="margin-bottom:14px"></div>
       <div class="grid cols-2" style="margin-bottom:14px"><div class="card pad" id="claude-card"></div><div class="card pad" id="share-card"></div></div>
@@ -1542,6 +1544,7 @@ async function viewSettings() {
     loadIntegrations();
     loadHealth();
     loadShare(st);
+    bindLangPicker();
     loadCalPush();
     loadIosCard();
     loadStorageCard();

@@ -2,9 +2,9 @@
 // 2.3: service worker «Конспекту».
 // E7 — офлайн: оболонка застосунку з кешу; дані (заняття, картки, PDF) — спершу з мережі, а без неї — збережена копія.
 // E5 — сповіщення Web Push: показує й відкриває потрібну сторінку.
-const VERSION = "kp-2.9.0";
+const VERSION = "kp-2.10.0";
 const SHELL = "shell-" + VERSION, DATA = "data-v1";
-const SHELL_URLS = ["/", "/static/style.css?v=31", "/static/study.js?v=22", "/static/course.js?v=32", "/static/semester.js?v=2", "/static/project.js?v=4", "/static/chat.js?v=2", "/static/share.js?v=1", "/static/app.js?v=35",
+const SHELL_URLS = ["/", "/static/style.css?v=32", "/static/i18n.js?v=3", "/static/study.js?v=22", "/static/course.js?v=32", "/static/semester.js?v=2", "/static/project.js?v=4", "/static/chat.js?v=2", "/static/share.js?v=2", "/static/app.js?v=36",
   "/static/icon.svg", "/static/icon-192.png", "/static/manifest.webmanifest"];
 // які GET-запити API зберігати для офлайну (решта — лише мережа)
 const CACHE_API = [/^\/api\/(state|schedule|week|deadlines|checklists|semester|study(\/progress)?)$/, /^\/api\/lectures$/,

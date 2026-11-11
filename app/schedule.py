@@ -46,6 +46,7 @@ def default_settings() -> dict:
         "trash_days": 14,                # скільки днів зберігати кошик
         "study_new_per_day": 15,         # 2.0: нових карток на день (FSRS)
         "theme": "auto",
+        "ui_language": "uk",             # 2.10: мова інтерфейсу — uk | en | ru
         "version": 1,
         # планер (вкладка «Планер»)
         "planner_address": "", "planner_lat": None, "planner_lon": None, "planner_place": "",
@@ -126,6 +127,8 @@ def save_settings(patch: dict) -> dict:
     for k, v in patch.items():
         if k in s:
             s[k] = v
+    if s.get("ui_language") not in ("uk", "en", "ru"):
+        s["ui_language"] = "uk"
     if s["parity_mode"] not in ("semester", "iso"):
         s["parity_mode"] = "semester"
     for k in ("default_notes_language", "default_audio_language"):

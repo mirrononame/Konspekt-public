@@ -28,7 +28,7 @@ from fastapi.staticfiles import StaticFiles
 
 from . import applog, chat, compact, share, course, eportal, project, push, semester, lectures, materials, planner, recorder, remote, schedule, storage, study, transcriber, usos, video
 
-VERSION = "2.9.0"
+VERSION = "2.10.1"
 # Бета: окрема копія даних (KONSPEKT_DATA), без синхронізацій, стиснення і Tailscale — реальні дані не чіпаються
 BETA = os.environ.get("KONSPEKT_BETA") == "1"
 if BETA:
