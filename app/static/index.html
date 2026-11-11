@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Конспект</title>
+<meta name="theme-color" content="#4f46e5">
+<link rel="icon" href="/static/icon.svg" type="image/svg+xml">
+<link rel="icon" href="/static/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="manifest" href="/static/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/static/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Конспект">
+<link rel="stylesheet" href="/static/style.css?v=31">
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <a class="brand" href="#/">
+      <img class="brand-logo" src="/static/icon.svg" alt="" width="30" height="30">
+      <span class="brand-name">Конспект</span>
+    </a>
+    <nav class="nav" id="nav"></nav>
+    <div class="sidebar-foot" id="sidebar-foot"></div>
+  </aside>
+  <main class="main">
+    <div id="offline" class="offline" hidden>Немає зв'язку з ПК — показую збережене (конспекти й картки за 2 тижні; відповіді надішлються пізніше). Перевірте, що ПК увімкнений, а на телефоні активний Tailscale.</div>
+    <div id="view" class="view"><div class="skeleton" style="height:34px;width:40%;margin-bottom:22px"></div><div class="skeleton" style="height:120px;margin-bottom:14px"></div><div class="skeleton" style="height:220px"></div></div>
+  </main>
+  <nav class="bottom-nav" id="bottom-nav"></nav>
+</div>
+<div id="drop-overlay" class="drop-overlay" hidden><div>Відпустіть файли, щоб додати лекцію</div></div>
+<a id="rec-pill" class="rec-pill" href="#/record" hidden></a>
+<div id="toasts" class="toasts"></div>
+<div id="modal-root"></div>
+<script src="/static/study.js?v=22"></script>
+<script src="/static/course.js?v=32"></script>
+<script src="/static/semester.js?v=2"></script>
+<script src="/static/project.js?v=4"></script>
+<script src="/static/chat.js?v=2"></script>
+<script src="/static/share.js?v=1"></script>
+<script src="/static/app.js?v=35"></script>
+</body>
+</html>

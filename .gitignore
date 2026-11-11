@@ -1,0 +1,21 @@
+# дані й ключі користувача — ніколи не на GitHub
+/data/
+/secrets/
+/beta/
+/releases/
+/exports/
+/_to_delete/
+/_build/
+
+# середовище й службове
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+tests/screenshots/
+.claude/
+*.bak
+*.tmp
+Thumbs.db
+desktop.ini
+.konspekt-public
